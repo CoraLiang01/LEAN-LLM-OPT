@@ -538,10 +538,24 @@ class UsageTracker:
     def _price(self, model_name: Optional[str]) -> Optional[ModelSpec]:
         if not self.cfg:
             return None
+        # Exact id wins outright; otherwise the longest prefix wins. Returning
+        # the *first* prefix match was wrong as soon as two roles ran models
+        # whose ids nest: cfg.models iterates in role order -- classifier,
+        # modeler, data_agent, coder -- and
+        # "gpt-4.1-2025-04-14".startswith("gpt-4") is True, so with a gpt-4
+        # classifier every gpt-4.1 call in the run was billed at gpt-4's
+        # $30/$60 instead of $2/$8. That reported $42.54 for a run that truly
+        # cost $14.52, and tripped the budget guard less than halfway through.
         if model_name:
+            best = None
             for spec in self.cfg.models.values():
-                if spec.model == model_name or model_name.startswith(spec.model):
+                if spec.model == model_name:
                     return spec
+                if spec.model and model_name.startswith(spec.model):
+                    if best is None or len(spec.model) > len(best.model):
+                        best = spec
+            if best is not None:
+                return best
         # fall back to the modeler spec (dominant cost) if unmatched
         return self.cfg.models.get("modeler") or next(
             iter(self.cfg.models.values()), None)
@@ -833,8 +847,14 @@ def load_refdata_docs(cfg: ExpConfig, columns: Optional[List[str]] = None):
     from langchain_core.documents import Document
 
     df = load_refdata(cfg)
+    # The fallback must reproduce the original CSVLoader, which put *every*
+    # column into every document. A two-column default silently changed the
+    # classifier's retrieval corpus on any machine whose exp_config.yaml did
+    # not spell `refdata_columns` out -- a different pipeline from the one the
+    # reported numbers came from, with nothing in the run log to show it.
+    # Trimming the columns is an experiment, so it has to be opted into.
     cols = columns or cfg.classification.get(
-        "refdata_columns", ["prompt", "New Problem Type"])
+        "refdata_columns", list(df.columns))
     missing = [c for c in cols if c not in df.columns]
     if missing:
         raise KeyError(f"columns {missing} not in RefData "

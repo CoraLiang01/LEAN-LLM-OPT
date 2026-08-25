@@ -125,8 +125,16 @@ model_profiles:
   # ---------------------------------------------------------------- GPT-4.1 --
   gpt-4.1:
     embedding_provider: openai
-    embedding_model: text-embedding-3-small
-    embedding_price_per_1m: 0.02         # checked 2026-07-24
+    # The notebooks called OpenAIEmbeddings() with no `model=`, and that
+    # constructor defaults to text-embedding-ada-002. Naming 3-small here
+    # silently swapped the embedding model under every retriever in the
+    # pipeline: the classifier's RefData lookup, few-shot exemplar selection,
+    # and the per-instance CSV row retrieval that feeds numbers to the modeller
+    # (data_nrm k=1000, data_ra k=220, data_tp k=300). Measured effect on
+    # classifier routing: NRM reached its own agent 3 times out of 25 under
+    # 3-small, 21-24 out of 25 under ada-002.
+    embedding_model: text-embedding-ada-002
+    embedding_price_per_1m: 0.10         # ada-002 list price; 3-small is 0.02
     defaults:
       provider: openai
       model: gpt-4.1-2025-04-14     # pin the dated snapshot, not the alias
