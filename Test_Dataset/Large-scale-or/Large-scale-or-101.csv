@@ -4429,7 +4429,7 @@ Test_Dataset/Large-scale-or/UFLP_testing/UFLP1/transportation_costs.csv",35950.6
 "
 M,1083,UFLP,"In the context of Colorado Motor Vehicle Sales, multiple car dealerships require inventory, and several suppliers located in different cities can provide the necessary vehicles. Each supplier incurs a fixed cost upon starting operations, with the fixed cost data provided in “fixed_cost.csv.” Each dealership needs to source a certain number of vehicles from these suppliers. For each dealership, the transportation cost per vehicle from each supplier is recorded in “transportation_costs.csv.” Demand information can be gained in 'demand.csv'. The objective is to determine which suppliers to open so that the demand of all dealerships is met while minimizing the total cost. The decision variables y_i are binary, indicating whether a supplier is operational (open). The decision variables x_{ij} represent the quantity of vehicles that dealership S_j sources from supplier F_i. For each dealership, x_{ij} represents the proportion of the total supply obtained from different suppliers.","Test_Dataset/Large-scale-or/UFLP_testing/UFLP2/demand.csv
 Test_Dataset/Large-scale-or/UFLP_testing/UFLP2/fixed_cost.csv
-Test_Dataset/Large-scale-or/UFLP_testing/UFLP2/transportation_costs.csv",1.86E+12,"\ Model UFLP
+Test_Dataset/Large-scale-or/UFLP_testing/UFLP2/transportation_costs.csv",1862205008487.07,"\ Model UFLP
     \ LP format - for model browsing. Use MPS format to capture full model detail.
     Minimize
 100.64 y[S1] + 98.72 y[S2] + 100.18 y[S3] + 96.58 y[S4] + 95.75 y[S5]
@@ -10176,34 +10176,29 @@ L,688,UFLP,"A retail company wants to decide where to open warehouses to minimiz
 
     You are to determine which warehouses to open and how to assign the demand of each store to the warehouses such that all store demands are met, warehouse capacities are not exceeded, and the total cost (opening + transportation) is minimized.","Test_Dataset/Large-scale-or/UFLP_testing/UFLP14/PotentialWarehouses_Costs.csv
 Test_Dataset/Large-scale-or/UFLP_testing/UFLP14/Stores_Demands.csv
-Test_Dataset/Large-scale-or/UFLP_testing/UFLP14/TransportationCost.csv",10188,"Minimize
- 3000 y_W1 + 3200 y_W2 + 3100 y_W3 + 2800 y_W4 + 3500 y_W5
- + 2700 y_W6 + 2900 y_W7 + 3050 y_W8 + 3100 y_W9 + 2200 y_W10
- + 2890 y_W11 + 12 x_W1_S1 + 17 x_W1_S2 + 13 x_W1_S3 + 18 x_W1_S4
- + 10 x_W1_S5 + 15 x_W1_S6 + 14 x_W1_S7 + 19 x_W1_S8 + 17 x_W1_S9
- + 14 x_W1_S10 + 15 x_W1_S11 + 11 x_W2_S1 + 19 x_W2_S2 + 14 x_W2_S3
- + 16 x_W2_S4 + 13 x_W2_S5 + 12 x_W2_S6 + 13 x_W2_S7 + 16 x_W2_S8
- + 18 x_W2_S9 + 13 x_W2_S10 + 13 x_W2_S11 + 14 x_W3_S1 + 15 x_W3_S2
- + 12 x_W3_S3 + 17 x_W3_S4 + 12 x_W3_S5 + 14 x_W3_S6 + 15 x_W3_S7
- + 18 x_W3_S8 + 12 x_W3_S9 + 15 x_W3_S10 + 16 x_W3_S11 + 15 x_W4_S1
- + 20 x_W4_S2 + 14 x_W4_S3 + 13 x_W4_S4 + 19 x_W4_S5 + 16 x_W4_S6
- + 17 x_W4_S7 + 20 x_W4_S8 + 14 x_W4_S9 + 17 x_W4_S10 + 17 x_W4_S11
- + 17 x_W5_S1 + 18 x_W5_S2 + 16 x_W5_S3 + 18 x_W5_S4 + 15 x_W5_S5
- + 13 x_W5_S6 + 12 x_W5_S7 + 17 x_W5_S8 + 16 x_W5_S9 + 16 x_W5_S10
- + 11 x_W5_S11 + 13 x_W6_S1 + 14 x_W6_S2 + 15 x_W6_S3 + 17 x_W6_S4
- + 11 x_W6_S5 + 17 x_W6_S6 + 13 x_W6_S7 + 19 x_W6_S8 + 15 x_W6_S9
- + 18 x_W6_S10 + 13 x_W6_S11 + 12 x_W7_S1 + 17 x_W7_S2 + 11 x_W7_S3
- + 14 x_W7_S4 + 12 x_W7_S5 + 16 x_W7_S6 + 14 x_W7_S7 + 16 x_W7_S8
- + 14 x_W7_S9 + 14 x_W7_S10 + 14 x_W7_S11 + 16 x_W8_S1 + 15 x_W8_S2
- + 14 x_W8_S3 + 19 x_W8_S4 + 14 x_W8_S5 + 16 x_W8_S6 + 15 x_W8_S7
- + 18 x_W8_S8 + 17 x_W8_S9 + 19 x_W8_S10 + 15 x_W8_S11 + 16 x_W9_S1
- + 13 x_W9_S2 + 16 x_W9_S3 + 16 x_W9_S4 + 12 x_W9_S5 + 14 x_W9_S6
- + 12 x_W9_S7 + 15 x_W9_S8 + 21 x_W9_S9 + 15 x_W9_S10 + 19 x_W9_S11
- + 14 x_W10_S1 + 15 x_W10_S2 + 18 x_W10_S3 + 13 x_W10_S4 + 15 x_W10_S5
- + 18 x_W10_S6 + 16 x_W10_S7 + 15 x_W10_S8 + 15 x_W10_S9 + 17 x_W10_S10
- + 21 x_W10_S11 + 15 x_W11_S1 + 16 x_W11_S2 + 17 x_W11_S3 + 18 x_W11_S4
- + 17 x_W11_S5 + 19 x_W11_S6 + 14 x_W11_S7 + 18 x_W11_S8 + 18 x_W11_S9
- + 19 x_W11_S10 + 13 x_W11_S11
+Test_Dataset/Large-scale-or/UFLP_testing/UFLP14/TransportationCost.csv",10419,"Minimize
+ 3000 y_W1 + 3200 y_W2 + 3100 y_W3 + 2800 y_W4 + 3500 y_W5 + 2700 y_W6
+ + 2900 y_W7 + 3050 y_W8 + 3100 y_W9 + 2200 y_W10 + 2890 y_W11 + 12 x_W1_S1
+ + 11 x_W1_S2 + 14 x_W1_S3 + 15 x_W1_S4 + 17 x_W1_S5 + 13 x_W1_S6 + 12 x_W1_S7
+ + 16 x_W1_S8 + 16 x_W1_S9 + 14 x_W1_S10 + 15 x_W1_S11 + 17 x_W2_S1 + 19 x_W2_S2
+ + 15 x_W2_S3 + 20 x_W2_S4 + 18 x_W2_S5 + 14 x_W2_S6 + 17 x_W2_S7 + 15 x_W2_S8
+ + 13 x_W2_S9 + 15 x_W2_S10 + 16 x_W2_S11 + 13 x_W3_S1 + 14 x_W3_S2 + 12 x_W3_S3
+ + 14 x_W3_S4 + 16 x_W3_S5 + 15 x_W3_S6 + 11 x_W3_S7 + 14 x_W3_S8 + 16 x_W3_S9
+ + 18 x_W3_S10 + 17 x_W3_S11 + 18 x_W4_S1 + 16 x_W4_S2 + 17 x_W4_S3 + 13 x_W4_S4
+ + 18 x_W4_S5 + 17 x_W4_S6 + 14 x_W4_S7 + 19 x_W4_S8 + 16 x_W4_S9 + 13 x_W4_S10
+ + 18 x_W4_S11 + 10 x_W5_S1 + 13 x_W5_S2 + 12 x_W5_S3 + 19 x_W5_S4 + 15 x_W5_S5
+ + 11 x_W5_S6 + 12 x_W5_S7 + 14 x_W5_S8 + 12 x_W5_S9 + 15 x_W5_S10 + 17 x_W5_S11
+ + 15 x_W6_S1 + 12 x_W6_S2 + 14 x_W6_S3 + 16 x_W6_S4 + 13 x_W6_S5 + 17 x_W6_S6
+ + 16 x_W6_S7 + 16 x_W6_S8 + 14 x_W6_S9 + 18 x_W6_S10 + 19 x_W6_S11 + 14 x_W7_S1
+ + 13 x_W7_S2 + 15 x_W7_S3 + 17 x_W7_S4 + 12 x_W7_S5 + 13 x_W7_S6 + 14 x_W7_S7
+ + 15 x_W7_S8 + 12 x_W7_S9 + 16 x_W7_S10 + 14 x_W7_S11 + 19 x_W8_S1 + 16 x_W8_S2
+ + 18 x_W8_S3 + 20 x_W8_S4 + 17 x_W8_S5 + 19 x_W8_S6 + 16 x_W8_S7 + 18 x_W8_S8
+ + 15 x_W8_S9 + 15 x_W8_S10 + 18 x_W8_S11 + 17 x_W9_S1 + 18 x_W9_S2 + 12 x_W9_S3
+ + 14 x_W9_S4 + 16 x_W9_S5 + 15 x_W9_S6 + 14 x_W9_S7 + 17 x_W9_S8 + 21 x_W9_S9
+ + 15 x_W9_S10 + 18 x_W9_S11 + 14 x_W10_S1 + 13 x_W10_S2 + 15 x_W10_S3 + 17 x_W10_S4
+ + 16 x_W10_S5 + 18 x_W10_S6 + 14 x_W10_S7 + 19 x_W10_S8 + 15 x_W10_S9 + 17 x_W10_S10
+ + 19 x_W10_S11 + 15 x_W11_S1 + 13 x_W11_S2 + 16 x_W11_S3 + 17 x_W11_S4 + 11 x_W11_S5
+ + 13 x_W11_S6 + 14 x_W11_S7 + 15 x_W11_S8 + 19 x_W11_S9 + 21 x_W11_S10 + 13 x_W11_S11
 Subject To
  Demand_S1: x_W1_S1 + x_W2_S1 + x_W3_S1 + x_W4_S1 + x_W5_S1 + x_W6_S1 + x_W7_S1 + x_W8_S1 + x_W9_S1 + x_W10_S1 + x_W11_S1 = 30
  Demand_S2: x_W1_S2 + x_W2_S2 + x_W3_S2 + x_W4_S2 + x_W5_S2 + x_W6_S2 + x_W7_S2 + x_W8_S2 + x_W9_S2 + x_W10_S2 + x_W11_S2 = 40
